@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DeedCode — Contact</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--teal:#0F5257;--teal-deep:#0A3C40;--amber:#E8A33D;--amber-deep:#C9822A;--cream:#FAF6EF;--card:#FFFFFF;--ink:#232323;--sage:#8FA998;--muted:#6b6b6b;
+    box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);} *{box-sizing:border-box;}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Fraunces',serif;margin:0;font-weight:600;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;max-width:920px;margin:0 auto;}
+  .logo{font-family:'Fraunces',serif;font-weight:700;font-size:23px;color:var(--teal);} .logo span{color:var(--amber);}
+  .navlinks{display:flex;gap:30px;font-size:15px;font-weight:500;color:var(--muted);}
+  .navlinks a{color:inherit;text-decoration:none;} .navlinks a.active{color:var(--teal);font-weight:600;}
+  .menu-toggle{display:none;background:none;border:none;font-size:26px;color:var(--teal);cursor:pointer;padding:4px 8px;}
+  @media(max-width:720px){.menu-toggle{display:block;}nav{position:relative;}
+    .navlinks{display:none;flex-direction:column;gap:16px;position:absolute;top:58px;right:24px;z-index:10;background:var(--card);padding:20px 26px;border-radius:14px;box-shadow:0 8px 28px rgba(15,82,87,.18);min-width:180px;}
+    .navlinks.open{display:flex;}}
+
+  .hero{position:relative;overflow:hidden;background:
+      radial-gradient(circle at 25% 25%, rgba(232,163,61,.32), transparent 45%),
+      radial-gradient(circle at 75% 15%, rgba(143,169,152,.35), transparent 50%),
+      linear-gradient(180deg,#0A3C40 0%,#0F5257 100%);
+    padding:80px 24px 44px;text-align:center;}
+  .hero-inner{max-width:580px;margin:0 auto;}
+  .eyebrow{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:18px;}
+  .hero h1{font-size:clamp(34px,7vw,54px);color:#fff;margin-bottom:16px;}
+  .hero p{font-size:18px;color:#D9E8E4;max-width:520px;margin:0 auto;}
+
+  section{padding:50px 0;} .band-white{background:#fff;}
+  .divider{height:1px;background:linear-gradient(to right,transparent,var(--sage),transparent);max-width:920px;margin:0 auto;}
+  .center-title{text-align:center;font-size:clamp(24px,4vw,27px);color:var(--teal);margin-bottom:34px;}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media(max-width:720px){.cards{grid-template-columns:1fr;}}
+  .card{background:var(--cream);border-radius:16px;padding:26px 20px;border-top:4px solid var(--amber);text-align:center;}
+  .card h3{font-size:16.5px;color:var(--teal);margin-bottom:8px;}
+  .card p{font-size:14px;color:var(--muted);margin:0;}
+  .card a{color:var(--teal);font-weight:600;text-decoration:none;}
+
+  .form-box{background:#FFFFFF;border-radius:20px;padding:42px 34px;max-width:580px;margin:0 auto;box-shadow:0 2px 22px rgba(15,82,87,.1);}
+  .form-box h2{font-size:25px;color:var(--teal);margin-bottom:8px;text-align:center;}
+  .form-box .sub{text-align:center;font-size:14.5px;color:var(--muted);margin-bottom:26px;}
+  label{display:block;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:6px;margin-top:18px;}
+  label:first-of-type{margin-top:0;}
+  input,select,textarea{width:100%;padding:13px 14px;border-radius:10px;border:1.5px solid var(--sage);background:var(--cream);font-family:'Inter',sans-serif;font-size:15px;color:var(--ink);}
+  textarea{resize:vertical;min-height:110px;}
+  .btn{padding:15px 30px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;display:inline-block;transition:transform .15s;border:none;cursor:pointer;}
+  .btn:hover{transform:translateY(-2px);} .btn-primary{background:var(--amber);color:#232323;box-shadow:0 8px 24px rgba(232,163,61,.3);width:100%;margin-top:24px;font-size:16px;}
+
+  .expect{text-align:center;max-width:600px;margin:0 auto;}
+  .expect h2{font-size:24px;color:var(--teal);margin-bottom:14px;}
+  .expect-grid{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin-top:24px;}
+  .expect-item{max-width:160px;}
+  .expect-item .n{font-family:'Fraunces',serif;font-size:26px;color:var(--amber-deep);font-weight:700;}
+  .expect-item p{font-size:13.5px;color:var(--muted);margin:6px 0 0;}
+
+  .closing-line{text-align:center;padding:50px 24px 60px;}
+  .closing-line p{font-size:19px;color:var(--teal);font-weight:600;font-family:'Fraunces',serif;font-style:italic;}
+
+  .site-footer{background:var(--teal-deep);color:#E4EFEC;}
+  .footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:34px;padding:50px 24px 34px;}
+  .footer-brand .logo{color:#fff;} .footer-brand .logo span{color:var(--amber);}
+  .footer-tag{font-size:14px;color:#CFE3DE;margin-top:10px;max-width:220px;}
+  .footer-col h4{font-family:'Inter',sans-serif;font-size:13px;letter-spacing:1px;color:var(--amber);margin-bottom:14px;text-transform:uppercase;}
+  .footer-col{display:flex;flex-direction:column;gap:10px;font-size:14px;}
+  .footer-col a{color:#E4EFEC;text-decoration:none;} .footer-col a:hover{color:var(--amber);}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.12);text-align:center;padding:18px 24px;font-size:12px;color:#9FC2BA;}
+  @media(max-width:600px){.footer-inner{flex-direction:column;gap:28px;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Deed<span>Code</span></div>
+  <div class="navlinks" id="navlinks">
+    <a href="/">Home</a><a href="/products/">Products</a><a href="/custom-solutions/">Custom Solutions</a><a href="/how-it-works/">How It Works</a><a href="/about/">About</a><a href="/contact/" class="active">Contact</a>
+  </div>
+  <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="const m=document.getElementById('navlinks');const o=m.classList.toggle('open');this.setAttribute('aria-expanded',o);this.textContent=o?'✕':'☰';">☰</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Get In Touch</div>
+    <h1>Let's talk.</h1>
+    <p>Whether you've got a problem to solve, a tool to ask about, or you're just not sure where to start — reach out. There's no wrong way to begin.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section class="wrap">
+  <h2 class="center-title">Three ways to start the conversation.</h2>
+  <div class="cards">
+    <div class="card"><h3>Chat with us right now.</h3><p>Use the chat bubble in the corner — someone's there to answer, day or night.</p></div>
+    <div class="card"><h3>Send us a message.</h3><p>Fill in the form below and tell us what's on your mind. We read every single one.</p></div>
+    <div class="card"><h3>Reach out directly.</h3><p><a href="mailto:hello@deedcode.co">hello@deedcode.co</a><br>Nairobi, Kenya</p></div>
+  </div>
+</section>
+
+<div class="band-white">
+  <section class="wrap">
+    <div class="form-box">
+      <h2>Tell us what's going on.</h2>
+      <p class="sub">Two minutes of your time. A real response from a real person.</p>
+      <form onsubmit="return false;">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Your name">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com">
+        <label for="need">What are you looking for?</label>
+        <select id="need">
+          <option>Browse Products</option>
+          <option>Request a Custom Tool</option>
+          <option>Ask a Question</option>
+          <option>Something Else</option>
+        </select>
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Tell us what's on your mind..."></textarea>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+  </section>
+</div>
+
+<section class="wrap expect">
+  <h2>What happens next.</h2>
+  <p style="font-size:16px;color:var(--muted);">We reply within one business day — usually sooner. No automated "we'll be in touch" silence.</p>
+  <div class="expect-grid">
+    <div class="expect-item"><div class="n">01</div><p>Your message reaches a real person, not a queue.</p></div>
+    <div class="expect-item"><div class="n">02</div><p>We read it properly before replying — no copy-paste answers.</p></div>
+    <div class="expect-item"><div class="n">03</div><p>You get a clear next step, even if the answer is "not yet."</p></div>
+  </div>
+</section>
+
+<div class="band-white closing-line">
+  <p>Good conversations start somewhere. This is as good a place as any.</p>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand"><div class="logo">Deed<span>Code</span></div><p class="footer-tag">Code for a cause.</p></div>
+    <div class="footer-col"><h4>Explore</h4><a href="/products/">Products</a><a href="/custom-solutions/">Custom Solutions</a><a href="/how-it-works/">How It Works</a><a href="/about/">About</a><a href="/contact/">Contact</a></div>
+    <div class="footer-col"><h4>Reach Us</h4><a href="mailto:hello@deedcode.co">hello@deedcode.co</a><span>Nairobi, Kenya</span></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; 2026 DeedCode. Code for a cause.</p></div>
+</footer>
+
+</body>
+</html>
