@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sermon Repurposer | DeedCode</title>
+<style>
+:root{--ink:#14213d;--gold:#fca311;--mint:#e8f1ee;--line:#c9d6d1;--mut:#4a5a6a}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--mint);background-image:repeating-linear-gradient(45deg,rgba(20,33,61,.03) 0 2px,transparent 2px 6px)}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif}
+header{background:var(--ink);color:#fff;padding:32px 20px 38px;border-bottom:6px solid var(--gold)}
+.w{max-width:1120px;margin:0 auto}
+header h1{margin:6px 0 8px;font-size:clamp(1.7rem,5vw,2.5rem);line-height:1.15}
+header p{margin:0;max-width:62ch;color:#dbe4f0}
+.brand{font-size:.9rem;color:var(--gold);font-weight:700}
+#app{display:grid;grid-template-columns:minmax(0,410px) minmax(0,1fr);gap:22px;padding:22px 16px 50px;align-items:start}
+@media(max-width:860px){#app{grid-template-columns:1fr}}
+.card{background:#fff;border:2px solid var(--ink);border-radius:6px;padding:18px;box-shadow:6px 6px 0 var(--ink)}
+fieldset{border:0;margin:0 0 14px;padding:0}
+legend{font-weight:700;font-size:1.05rem;padding:0 0 6px;border-bottom:3px solid var(--gold);margin-bottom:8px;width:100%}
+label{display:block;font-size:.88rem;font-weight:600;margin:10px 0 3px}
+label small{font-weight:400;color:var(--mut)}
+input,select,textarea{width:100%;font:inherit;padding:9px 10px;border:1.5px solid var(--line);border-radius:4px;background:#fbfdfc;color:var(--ink)}
+textarea{min-height:72px;resize:vertical}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+button{font:inherit;font-weight:700;border:2px solid var(--ink);border-radius:4px;padding:10px 14px;cursor:pointer;background:var(--gold);color:var(--ink)}
+button.alt{background:#fff}
+button:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink)}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.tabs button{background:#fff;padding:8px 12px;font-size:.92rem}
+.tabs button[aria-selected=true]{background:var(--ink);color:#fff}
+.item{border:1.5px solid var(--line);border-radius:6px;margin-bottom:14px;background:#fbfdfc}
+.item h3{margin:0;padding:10px 14px;font-size:1.05rem;display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:3px solid var(--gold)}
+.item h3 button{font-size:.8rem;padding:4px 10px;box-shadow:none}
+.txt{padding:12px 14px;white-space:pre-wrap;word-break:break-word;outline:0}
+.empty{color:var(--mut);text-align:center;padding:36px 8px}
+.tip{font-size:.85rem;color:var(--mut)}
+.sticky{position:sticky;top:10px}
+@media(prefers-reduced-motion:reduce){button:hover{transform:none}}
+</style>
+<style>.dcbar,.dcbar *{box-sizing:border-box}.dcbar{position:sticky;top:0;z-index:50;background:#0A2E2C;border-bottom:1px solid #24433D;font:500 15px/1.4 Manrope,system-ui,sans-serif}.dcbar .dcw{max-width:1140px;margin:0 auto;padding:0 20px;height:64px;display:flex;align-items:center;justify-content:space-between}.dcbar .lg{font:400 28px "Instrument Serif",Georgia,serif;color:#fff;text-decoration:none}.dcbar .lg b{color:#E4A83A;font-weight:400}.dcbar nav{display:flex;align-items:center;gap:6px}.dcbar nav>a{color:#DDE7E2;text-decoration:none;padding:8px 12px}.dcbar nav .btn{background:#E4A83A;color:#0A2E2C;font-weight:700;border-radius:8px;padding:9px 16px;margin-left:8px}.dm{position:relative}.ddb{background:none;border:0;color:#DDE7E2;font:inherit;padding:8px 12px;cursor:pointer}.ddb i{display:inline-block;margin-left:6px;border:4px solid transparent;border-top-color:currentColor;vertical-align:-2px}.ddp{display:none;position:absolute;top:100%;left:0;min-width:250px;background:#fff;border-radius:12px;box-shadow:0 18px 40px -10px rgba(0,0,0,.4);padding:8px}.dm.open .ddp{display:block}.ddp a{display:block;padding:10px 12px;color:#0A2E2C;text-decoration:none;border-radius:8px}.ddp a:hover{background:#EEF3F0}.mb{display:none;background:none;border:1px solid #3a5a53;color:#fff;border-radius:8px;padding:8px 12px;font:600 14px inherit}@media(max-width:860px){.mb{display:block}.dcbar nav{display:none;position:absolute;left:0;right:0;top:64px;background:#0A2E2C;flex-direction:column;align-items:stretch;padding:10px 20px 20px;max-height:80vh;overflow:auto}.dcbar nav.open{display:flex}.ddp{position:static;box-shadow:none;background:#12302a;margin:0 0 6px}.ddp a{color:#DDE7E2}.dm.open .ddp{display:block}}.dcft{background:#0A2E2C;color:#97ADA4;text-align:center;padding:34px 20px;font:14px/1.7 Manrope,system-ui,sans-serif}.dcft a{color:#E9D9A8;margin:0 8px}</style><style>:root{--ink:#0A2E2C;--gold:#9A6F14;--mint:#F2F5F2;--line:#D5DDD9;--mut:#576C65}header{background:#0B3D3A!important;border-bottom-color:#E4A83A!important}.brand{color:#E4A83A!important}.card,form,.out{box-shadow:0 18px 40px -26px rgba(11,31,27,.5)!important;border-width:1px!important;border-radius:14px!important}button,.btn{border-radius:8px}</style><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E3B31'/%3E%3Ctext x='16' y='23' font-family='Georgia' font-size='20' fill='%23C9A24B' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E"><style id="dc-brand">html:root{--bg:#FBF8F1;--card:#fff;--ink:#10211E;--mute:#52645E;--line:#E5E0D0;--brand:#0B3D3A;--gold:#9A6F14;--btn:#E4A83A;--btnink:#10211E;--dk:#0A2E2C;--dkink:#F1F5F2;--dkmute:#A9BFB8;--dkline:#1F4743;--dkt:linear-gradient(160deg,#0C423F 0%,#0A2E2C 100%);--dks:auto;--ppt:none;--pps:auto}html body,html body.d-ngo,.sk-m,body.d-ngo .sk-m{background:var(--bg)!important;background-image:none!important}.sk-m{background:#F3F7F2!important}.btn,nav .btn{background:var(--brand)}.btn:hover{background:#0F4E4A}nav .btn,header nav a.btn{background:var(--btn)!important;color:var(--btnink)!important}.eye::before{background:var(--btn)}</style><script src="/deedcode.js"></script></head>
+<body><div class="dcbar"><div class="dcw"><a class="lg" href="/">Deed<b>Code</b></a><button class="mb" id="dcmb" type="button" aria-expanded="false">Menu</button><nav id="nv"><a href="/" class="cur">Home</a><div class="dm"><button class="ddb" aria-expanded="false" type="button">Churches<i></i></button><div class="ddp"><a href="/churches">Church overview</a><a href="/poster-maker">Church Poster Maker</a><a href="/sermon-artwork">Sermon Artwork Maker</a><a href="/sermon-repurposer">Sermon Repurposer</a><a href="/giving-page-generator">Giving Page Generator</a><a href="/pledge-tracker">Pledge Tracker and Reminders</a><a href="/sermon-library">Sermon Library</a><a href="/giving-tracker">Giving Tracker</a><a href="/church-tools">All church tools</a></div></div><div class="dm"><button class="ddb" aria-expanded="false" type="button">NGOs &amp; Charities<i></i></button><div class="ddp"><a href="/ngos">NGO and charity overview</a><a href="/ngo-poster-maker">NGO Poster Maker</a><a href="/grant-proposal-generator">Grant Proposal Generator</a><a href="/giving-page-generator">Giving Page Generator</a><a href="/pledge-tracker">Pledge Tracker and Reminders</a><a href="/donor-tracker">Donor Tracker</a><a href="/ngo-tools">All charity tools</a></div></div><div class="dm"><button class="ddb" aria-expanded="false" type="button">Tools<i></i></button><div class="ddp"><a href="/tools">All tools</a><a href="/poster-studio">Poster Studio</a><a href="/website-studio">Website Studio</a></div></div><div class="dm"><button class="ddb" aria-expanded="false" type="button">More<i></i></button><div class="ddp"><a href="/designs">Design gallery</a><a href="/work">Our work</a><a href="/how-it-works">How it works</a><a href="/custom-solutions">Custom websites</a><a href="/about">About us</a><a href="/contact">Talk to us</a></div></div><a class="btn" href="/contact#start">Get my free plan</a></nav></div></div>
+<header><div class="w">
+<div class="brand">DeedCode &middot; Code for a cause</div>
+<h1>Sermon Repurposer</h1>
+<p>Turn one sermon into a week of content: devotionals, social posts, quote cards, YouTube description, newsletter and small group questions. Paste once, get everything.</p>
+</div></header>
+
+<div class="w" id="app">
+<form class="card" onsubmit="return false">
+<div class="bar"><button class="alt" id="ex" type="button">Try an example</button></div>
+<fieldset><legend>1. The sermon</legend>
+<label for="title">Sermon title</label><input id="title" placeholder="e.g. When the Waiting Is Long">
+<div class="row"><div><label for="pr">Preacher</label><input id="pr" placeholder="Pastor Daniel"></div>
+<div><label for="ch">Church</label><input id="ch" placeholder="Grace Community Church"></div></div>
+<div class="row"><div><label for="ref">Main scripture</label><input id="ref" placeholder="Psalm 27:14"></div>
+<div><label for="link">Watch link <small>(optional)</small></label><input id="link" placeholder="https://youtube.com/..."></div></div>
+<label for="st">Scripture text <small>(paste the verse, so we never guess a translation)</small></label><textarea id="st"></textarea>
+</fieldset>
+<fieldset><legend>2. The message</legend>
+<label for="big">Big idea <small>(one sentence)</small></label><input id="big" placeholder="God is working even while we wait.">
+<label for="pts">Key points <small>(one per line, 2 to 5)</small></label><textarea id="pts"></textarea>
+<label for="apps">Real-life applications <small>(optional, one per line, matches the points)</small></label><textarea id="apps"></textarea>
+<label for="notes">Sermon notes or transcript <small>(optional, we pull the best quotes from it)</small></label><textarea id="notes" style="min-height:110px"></textarea>
+<label for="cta">Call to action <small>(what should people do?)</small></label><input id="cta" placeholder="Pray for one person this week">
+</fieldset>
+<fieldset><legend>3. Style</legend>
+<div class="row"><div><label for="tone">Tone</label><select id="tone"><option value="warm">Warm and friendly</option><option value="bold">Bold and energetic</option><option value="gentle">Calm and gentle</option></select></div>
+<div><label for="em">Emojis</label><select id="em"><option value="1">On</option><option value="0">Off</option></select></div></div>
+<label for="tags">Your hashtags <small>(optional, separated by spaces)</small></label><input id="tags" placeholder="#NairobiChurch #SundayService">
+</fieldset>
+<button id="go" type="button" style="width:100%;font-size:1.05rem">Create my content pack</button>
+</form>
+
+<div class="card sticky" style="position:static">
+<div class="tabs" role="tablist" id="tabs"></div>
+<div class="bar" id="acts" hidden><button class="alt" id="ca" type="button">Copy everything</button><button class="alt" id="dl" type="button">Download .txt</button></div>
+<div id="res"><p class="empty">Fill in the sermon on the left and press <b>Create my content pack</b>. Everything stays on your device.</p></div>
+</div>
+</div>
+
+<script>
+const $=i=>document.getElementById(i);
+const g=i=>$(i).value.trim();
+const L=s=>s.split(/\n+/).map(x=>x.trim().replace(/^[-\u2022*\d.)\s]+/,'')).filter(Boolean);
+const dot=s=>/[.!?]$/.test(s)?s:s+'.';
+const IDS=['title','pr','ch','ref','link','st','big','pts','apps','notes','cta','tone','em','tags'];
+const TABS=[['dev','Devotional'],['soc','Social'],['quo','Quotes'],['yt','YouTube'],['em','Email'],['dq','Small group']];
+let R=null,tab='dev';
+
+function quotes(c){
+  const out=[];
+  if(c.big)out.push(dot(c.big));
+  c.pts.forEach(p=>out.push(dot(p)));
+  const ss=(c.notes.match(/[^.!?\n]+[.!?]+/g)||[]).map(s=>s.trim()).filter(s=>s.length>=35&&s.length<=140);
+  const sc=s=>(/\bbut\b|\bnot\b|\bnever\b|\balways\b|\bno matter\b/i.test(s)?2:0)+(/\b(God|Jesus|Lord|faith|grace|love|hope|prayer|trust)\b/i.test(s)?1:0)+(s.length<95?1:0);
+  ss.map((s,i)=>({s,i,v:sc(s)})).sort((a,b)=>b.v-a.v||a.i-b.i).slice(0,6).forEach(o=>out.push(o.s));
+  return [...new Set(out)].slice(0,8);
+}
+
+function make(){
+  const c={};IDS.forEach(i=>c[i]=g(i));
+  c.pts=L(c.pts);c.apps=L(c.apps);
+  const E=(e)=>c.em==='1'?e:'';
+  const T=c.title||'This Sunday\u2019s Message',P=c.pr||'our pastor',CH=c.ch||'our church',big=c.big?dot(c.big):'God has something to say to you today.';
+  const open={warm:'Grace and peace, family! '+E('\u{1F64F}'),bold:'Church, this one is for you! '+E('\u{1F525}'),gentle:'A quiet word for your week. '+E('\u{1F54A}\uFE0F')}[c.tone];
+  const scr=c.ref?(c.st?`\u201C${c.st}\u201D (${c.ref})`:c.ref):'';
+  const cta=c.cta?dot(c.cta):'Take one small step this week and tell someone about it.';
+  const base='#'+CH.replace(/[^a-z0-9]/gi,''),tt=(c.tags?c.tags.split(/\s+/):[]);
+  const hs=[...new Set([...tt,base,'#Sermon','#Faith','#Jesus','#Church'])].filter(x=>x.length>1).slice(0,8).join(' ');
+  const pts=c.pts,q=quotes(c);
+  const numbered=pts.map((p,i)=>`${i+1}. ${p}`).join('\n');
+  const watch=c.link?`\n\n${E('\u25B6\uFE0F ')}Watch the full message: ${c.link}`:'';
+  const R={dev:[],soc:[],quo:[],yt:[],em:[],dq:[]};
+
+  // Devotional
+  const days=[{h:'Hear it',t:`${scr?scr+'\n\n':''}This week\u2019s big idea is simple: ${big} Read the passage slowly, twice. Which word or phrase stands out to you? Write it down.\n\nPray: Father, open my eyes and my heart to your Word. Amen.`}];
+  pts.slice(0,3).forEach((p,i)=>days.push({h:p,t:`Hold on to one truth today: ${dot(p)}\n\n${c.apps[i]?dot(c.apps[i]):'Ask yourself: where in my life do I need to believe this right now? Think of one real situation at home, at work or in your heart.'}\n\nPray: Lord, help me not just to hear this but to live it. Amen.`}));
+  days.push({h:'Live it',t:`${cta}\n\nDo not let this sermon become just a nice memory. Write down one step, do it today, and tell one person what God is teaching you.\n\nPray: Jesus, make me a doer of your Word and not only a hearer. Amen.`});
+  R.dev.push({t:`${days.length}-Day Devotional: ${T}`,x:`${open}\n\nThis devotional follows ${P}\u2019s message \u201C${T}\u201D at ${CH}. Take five minutes each day.\n\n`+days.map((d,i)=>`DAY ${i+1}: ${d.h}\n${d.t}`).join('\n\n')});
+
+  // Social
+  R.soc.push({t:'Facebook post',x:`${open}\n\nThis Sunday at ${CH}, ${P} shared \u201C${T}\u201D.\n\n${E('\u{1F4A1} ')}Big idea: ${big}\n\n${pts.length?'Key takeaways:\n'+numbered+'\n\n':''}${cta}${watch}\n\nShare this with someone who needs it today.\n\n${hs}`});
+  R.soc.push({t:'Instagram caption',x:`${q[0]?'\u201C'+q[0]+'\u201D':big}\n\n${E('\u{1F4D6} ')}${T}${c.ref?' ('+c.ref+')':''}\n${E('\u{1F399}\uFE0F ')}${P}, ${CH}\n\n${pts.slice(0,3).map(p=>E('\u2705 ')+p).join('\n')}\n\n${E('\u{1F449} ')}${cta}\nSave this and share it with a friend.\n\n${hs}`});
+  const tw=[`${q[0]?'\u201C'+q[0]+'\u201D':big}`,`Sermon thread: ${T}${c.ref?' ('+c.ref+')':''}`,...pts.slice(0,4),cta+(c.link?' '+c.link:'')];
+  const n=tw.length;R.soc.push({t:'X / Twitter thread',x:tw.map((s,i)=>(s.length>262?s.slice(0,259)+'...':s)+` (${i+1}/${n})`).join('\n\n')});
+  R.soc.push({t:'WhatsApp broadcast',x:`${E('\u{1F64F} ')}*${T}*\n_${P}, ${CH}_\n\n${big}\n\n${pts.slice(0,3).map(p=>'\u2022 '+p).join('\n')}\n\n${cta}${c.link?'\n'+c.link:''}\n\nForward this to someone who needs it.`});
+  R.soc.push({t:'30-second Reel / Short script',x:`HOOK (0-3s): ${q[0]?'\u201C'+q[0]+'\u201D':big}\n\n${pts.slice(0,3).map((p,i)=>`BEAT ${i+1} (${3+i*8}-${11+i*8}s): ${p}`).join('\n')}\n\nCALL TO ACTION (last 4s): ${cta}\n\nOn-screen text: ${T}\nCaption: ${T} | ${P} ${hs}`});
+
+  // Quotes
+  q.forEach((s,i)=>R.quo.push({t:`Quote card ${i+1}`,x:`\u201C${s}\u201D\n\n\u2014 ${P}, ${CH}${c.ref&&i===0?'\n'+c.ref:''}`}));
+  if(!q.length)R.quo.push({t:'Quotes',x:'Add a big idea, key points or sermon notes to get quote cards.'});
+
+  // YouTube
+  const kw=[...new Set([...T.toLowerCase().split(/\W+/).filter(w=>w.length>3),CH.toLowerCase(),P.toLowerCase(),'sermon','church','faith','christian','bible study',c.ref.toLowerCase()].filter(Boolean))].slice(0,15);
+  R.yt.push({t:'Title ideas',x:`${T} | ${P}\n${T}: ${big.replace(/\.$/,'')}\n${CH} Sermon: ${T}${c.ref?' ('+c.ref+')':''}`});
+  R.yt.push({t:'Description',x:`${T}${c.ref?' ('+c.ref+')':''}\n${P} at ${CH}\n\n${big}\n\n${pts.length?'In this message:\n'+pts.map((p,i)=>`${i?(i*8)+':00':'00:00'} ${p}`).join('\n')+'\n(Change the times to match your video.)\n\n':''}${cta}\n\nSubscribe so you never miss a message.\n\n${hs}`});
+  R.yt.push({t:'Tags',x:kw.join(', ')});
+  R.yt.push({t:'Pinned comment',x:`${open}\n\nWhat part of \u201C${T}\u201D spoke to you most? Tell us below, and we will pray for you.`});
+
+  // Email
+  R.em.push({t:'Subject lines',x:`${T}: your weekly takeaway\nYou may have missed this word from ${P}\n${big.replace(/\.$/,'')}`});
+  R.em.push({t:'Newsletter body',x:`Dear friend,\n\n${open}\n\nThis week at ${CH}, ${P} spoke on \u201C${T}\u201D.${scr?'\n\n'+scr:''}\n\nThe big idea: ${big}\n\n${pts.length?'Three things to take home:\n'+numbered+'\n\n':''}${cta}${c.link?'\n\nWatch it again: '+c.link:''}\n\nWe are praying for you this week.\n\nWith love,\n${CH}`});
+
+  // Small group
+  const dq=[`Icebreaker: When was the last time you had to wait a long time for something important? How did it feel?`,`Read ${c.ref||'the passage'} together. What stands out to you, and why?`,...pts.slice(0,3).map(p=>`\u201C${p}\u201D. What does this look like in everyday life for you?`),`Where is God asking you to take a step this week? ${cta}`,`How can we pray for each other this week?`];
+  R.dq.push({t:'Discussion guide (45 minutes)',x:`${T}\n${scr?scr+'\n':''}\n`+dq.map((x,i)=>`${i+1}. ${x}`).join('\n\n')});
+  return R;
+}
+
+function show(){
+  $('tabs').innerHTML=TABS.map(([k,n])=>`<button type="button" role="tab" data-k="${k}" aria-selected="${k===tab}">${n}</button>`).join('');
+  if(!R)return;
+  $('acts').hidden=false;
+  $('res').innerHTML=R[tab].map((o,i)=>`<div class="item"><h3>${esc(o.t)}<button type="button" class="alt" data-c="${i}">Copy</button></h3><div class="txt" contenteditable="true" id="t${i}">${esc(o.x)}</div></div>`).join('');
+}
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const cp=async(txt,b,l)=>{try{await navigator.clipboard.writeText(txt)}catch(_){const x=document.createElement('textarea');x.value=txt;document.body.appendChild(x);x.select();try{document.execCommand('copy')}catch(__){}x.remove()}const o=b.textContent;b.textContent='Copied!';setTimeout(()=>b.textContent=o,1400)};
+const all=()=>TABS.map(([k,n])=>'=== '+n.toUpperCase()+' ===\n\n'+R[k].map((o,i)=>o.t+'\n'+o.x).join('\n\n---\n\n')).join('\n\n\n');
+
+document.addEventListener('click',e=>{
+  const t=e.target;
+  if(t.dataset.k){tab=t.dataset.k;show()}
+  else if(t.dataset.c!=null)cp($('t'+t.dataset.c).innerText,t);
+});
+$('go').onclick=()=>{R=make();show();try{localStorage.setItem('dc_sermon',JSON.stringify(Object.fromEntries(IDS.map(i=>[i,$(i).value]))))}catch(_){}if(innerWidth<860)$('res').scrollIntoView({behavior:'smooth'})};
+$('ca').onclick=e=>cp(all(),e.target);
+$('dl').onclick=()=>{const u=URL.createObjectURL(new Blob([all()],{type:'text/plain'}));const a=document.createElement('a');a.href=u;a.download=(g('title')||'sermon').replace(/[^\w]+/g,'-')+'-content-pack.txt';a.click();URL.revokeObjectURL(u)};
+$('ex').onclick=()=>{const v={title:'When the Waiting Is Long',pr:'Pastor Daniel',ch:'Grace Community Church',ref:'Psalm 27:14',st:'Wait for the Lord; be strong and take heart and wait for the Lord.',big:'God is working even while we wait.',pts:'Waiting is not wasted time\nGod grows our faith in the quiet seasons\nWe wait with hope, not with fear',apps:'Think of one prayer you have stopped praying and start again today.\nThank God for one way he has already carried you through a hard season.\nReplace one worry this week with a short prayer.',notes:'Many of us want God to hurry, but God is never late. Waiting is not the same as doing nothing. The seed in the ground looks quiet, but it is growing. When you cannot see God moving, trust that he is still faithful. Do not let a long season make you believe a lie about God.',cta:'Pray for one person who is waiting on God this week',tone:'warm',em:'1',tags:'#NairobiChurch'};IDS.forEach(i=>{if(v[i]!=null)$(i).value=v[i]});$('go').click()};
+(function(){try{const s=JSON.parse(localStorage.getItem('dc_sermon')||'null');if(s)IDS.forEach(i=>{if(s[i]!=null)$(i).value=s[i]})}catch(_){}show()})();
+</script>
+<div class="dcft"><div><a href="/churches">Churches</a><a href="/ngos">NGOs &amp; Charities</a><a href="/tools">Tools</a><a href="/designs">Design gallery</a><a href="/contact">Contact</a></div><div>© 2026 DeedCode. Code for a cause. &middot; hello@deedcode.com</div></div><script>(function(){var n=document.getElementById("nv"),m=document.getElementById("dcmb");if(m)m.onclick=function(){var o=n.classList.toggle("open");m.setAttribute("aria-expanded",o)};var all=function(){[].forEach.call(document.querySelectorAll(".dm.open"),function(d){d.classList.remove("open")})};[].forEach.call(document.querySelectorAll(".ddb"),function(b){b.onclick=function(e){e.stopPropagation();var d=b.parentNode,o=d.classList.contains("open");all();if(!o)d.classList.add("open")}});document.addEventListener("click",function(e){if(!e.target.closest(".dm"))all()})})();</script></body>
+</html>
