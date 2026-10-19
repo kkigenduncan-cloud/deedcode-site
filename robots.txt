@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /template-manager
+Disallow: /deploy-check
+
+Sitemap: https://deedcode.com/sitemap.xml
