@@ -1,0 +1,89 @@
+/* =====================================================================
+   DeedCode Design System v5  |  theme.css
+   Loaded AFTER each page's inline CSS, so it is the single source of
+   truth for colour + type. Change a token here and the whole site follows.
+   60% canvas  |  30% indigo structure  |  10% emerald action
+   ===================================================================== */
+:root{
+  /* Canvas (60%) */
+  --canvas:#FFFFFF; --ice:#F8FAFC;
+  /* Structure + text (30%) */
+  --ink:#0F172A; --indigo:#1E1B4B; --txt:#334155; --muted:#475569;
+  /* Action + accent (10%).  #059669 is the brand emerald; white text on it is only 3.8:1,
+     so solid buttons use the deeper #047857 (5.5:1). Hover goes deeper still (7.7:1). */
+  --accent:#059669; --accent-strong:#047857; --accent-deep:#065F46;
+  --accent-on-dark:#34D399; --accent-tint:#ECFDF5;
+  /* Borders + focus */
+  --line:#E2E8F0; --line-strong:#CBD5E1; --field:#64748B; --focus:#4338CA;
+  /* Type */
+  --font-head:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-body:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;
+  /* Legacy aliases so older rules inherit the new palette */
+  --brand:var(--accent-strong); --sun:var(--accent-on-dark); --gold:var(--accent-on-dark); --mist:var(--ice);
+}
+
+/* ---------- Typography ---------- */
+body{font-family:var(--font-body);font-size:1.0625rem;line-height:1.7;color:var(--txt);background:var(--canvas);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3,h4,.logo,.items strong,.panel aside b{font-family:var(--font-head);color:var(--ink);font-weight:700}
+h1{font-size:clamp(2rem,6vw,3.6rem);line-height:1.08;letter-spacing:-.03em;font-weight:800}
+h2{font-size:clamp(1.65rem,4vw,2.5rem);line-height:1.15;letter-spacing:-.025em;font-weight:800}
+h3{font-size:clamp(1.2rem,2.4vw,1.4rem);line-height:1.25;letter-spacing:-.015em}
+h4{font-size:1rem;letter-spacing:-.01em}
+.hero h1,.band h2,.dark h2,.dark h3,footer h4,.tier h3,.side h3{color:#fff}
+.lead{font-size:clamp(1.05rem,2.2vw,1.2rem);line-height:1.7}
+.eyebrow,.badge,.pill,.tag,.price,.goal,.logo small{font-family:var(--font-body)}
+a{color:var(--accent-strong)}a:hover{color:var(--accent-deep)}
+p a,li a{text-underline-offset:3px;text-decoration-thickness:1.5px}
+::placeholder{color:#64748B;opacity:1}
+
+/* ---------- Surfaces ---------- */
+.hero,.band{background:radial-gradient(900px 480px at 88% -12%,#4f46e547,transparent 62%),linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%);color:#CBD5E1}
+.band h2,.band p{color:#fff}.band p{color:#E2E8F0}
+.dark{background:radial-gradient(800px 420px at 50% 0,#4f46e540,transparent 70%),linear-gradient(160deg,#0F172A,#1E1B4B)}
+.alt{background:var(--ice)}
+.card,.path,.tier,.formcard{border-color:var(--line)}
+footer{background:var(--ink)}
+
+/* ---------- Eyebrows ---------- */
+.eyebrow{color:var(--accent-on-dark)}.eyebrow:before{background:var(--accent-on-dark)}
+.sec .eyebrow,.alt .eyebrow{color:var(--accent-strong)}.sec .eyebrow:before,.alt .eyebrow:before{background:var(--accent)}
+
+/* ---------- Buttons (solid accent, white text, smooth scale) ---------- */
+.btn,.btn.sun{background:var(--accent-strong);border-color:var(--accent-strong);color:#fff;font-family:var(--font-body);font-weight:700;box-shadow:0 1px 2px #0f172a1f,0 8px 18px #04785730;transition:transform .18s ease,background-color .18s ease,border-color .18s ease,box-shadow .18s ease}
+.btn:hover,.btn.sun:hover{background:var(--accent-deep);border-color:var(--accent-deep);color:#fff;transform:scale(1.03);box-shadow:0 2px 4px #0f172a26,0 12px 26px #06503a40}
+.btn:active{transform:scale(.98)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line-strong);box-shadow:none}
+.btn.ghost:hover{background:var(--ice);border-color:var(--ink);color:var(--ink);box-shadow:none}
+.btn.ghost.light{color:#fff;border-color:#ffffff73}.btn.ghost.light:hover{background:#ffffff1f;border-color:#fff;color:#fff}
+.hero .btn:not(.ghost),.band .btn:not(.ghost),.dark .btn:not(.ghost),.side .btn{box-shadow:0 0 0 1px #ffffff2e,0 10px 26px #00000047}
+.badge,.tag,.pill:not(.live){background:var(--accent-on-dark);color:var(--ink)}.badge{background:linear-gradient(180deg,#6EE7B7,#34D399)}
+
+/* ---------- Navigation ---------- */
+nav a:not(.btn){font-family:var(--font-body)}
+nav a:not(.btn):hover,nav a[aria-current]{background:var(--ice);color:var(--accent-strong)}
+.panel{border-top-color:var(--accent-on-dark)}
+.items em{color:var(--muted)}
+footer a{color:#CBD5E1}footer a:hover{color:#fff}footer{border-top-color:var(--accent-on-dark)}
+.logo small{color:var(--muted)}.logo small b{color:var(--accent-strong)}footer .logo small{color:#CBD5E1}footer .logo small b{color:var(--accent-on-dark)}
+
+/* ---------- Light-surface accents ---------- */
+.chipsm .on,.chips input:checked+span{border-color:var(--accent-strong);background:var(--accent-tint)}
+.chips input:checked+span{box-shadow:0 0 0 3px #04785733}
+.note.alert,.disc,.pull{border-left-color:var(--accent-strong)}
+.chan .more{border-bottom-color:var(--accent)}
+.fld{color:#64748B}
+
+/* ---------- Infrastructure promise banner ---------- */
+.promise{background:linear-gradient(120deg,#047857,#065F46);color:#fff}
+.promise .big,.promise p.stmt,.promise .eyebrow{color:#fff}.promise .eyebrow:before{background:#fff}
+
+/* ---------- Forms ---------- */
+label{font-weight:600}
+input,select,textarea{color:var(--ink);background:#fff;border:1.5px solid var(--field)}
+input:focus,select:focus,textarea:focus{border-color:var(--focus);outline:3px solid #4338ca40;outline-offset:1px}
+
+/* ---------- Focus (visible on light AND dark surfaces) ---------- */
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;box-shadow:0 0 0 2px #fff}
+.hero :focus-visible,.band :focus-visible,.dark :focus-visible,.promise :focus-visible,footer :focus-visible,.side :focus-visible,.panel aside :focus-visible,.stage :focus-visible{outline-color:#6EE7B7;box-shadow:0 0 0 2px #0F172A}
+.chips input:focus-visible+span{outline:3px solid var(--focus);outline-offset:2px}
+.skip{position:absolute;left:12px;top:-64px;z-index:100;background:var(--ink);color:#fff;padding:.7em 1.1em;border-radius:10px;font-weight:700;text-decoration:none;transition:top .15s}.skip:focus{top:12px;color:#fff}
