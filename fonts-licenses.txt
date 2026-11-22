@@ -1,4 +1,0 @@
-Fonts used on deedcode.com are self-hosted and licensed under the SIL Open Font License 1.1 (free for commercial use):
-- Inter, Copyright 2016 The Inter Project Authors (https://github.com/rsms/inter)
-- Plus Jakarta Sans, Copyright 2020 The Plus Jakarta Sans Project Authors (https://github.com/tokotype/PlusJakartaSans)
-License text: https://openfontlicense.org
