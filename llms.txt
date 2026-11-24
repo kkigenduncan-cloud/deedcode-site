@@ -1,0 +1,15 @@
+# DeedCode
+
+> DeedCode is a Nairobi, Kenya automation systems partner for churches, ministries and NGOs, founded by Duncan K. Kigen. We automate guest follow-up, giving and receipts, sermon study guides and live impact tracking behind a fast mobile-first website. a value ladder from a free Time-Leak Audit, through Starters (KES 4,900 church, KES 9,900 NGO), to the complete Church Automation Suite (founding price KES 9,900, then KES 14,900) and NGO Impact & Grant Suite (KES 35,000). Live in 7 days, with three guarantees: 7-day go-live, 90-day money-back and no lock-in.
+
+## Pages
+- [Church Automation Suite](https://deedcode.com/church): automated guest and prayer follow-up, sermon-to-study-guide, M-Pesa giving with instant receipts
+- [NGO Impact & Grant Suite](https://deedcode.com/ngos): field-to-website impact tracking, multi-currency giving, instant donor receipts, ODPC-ready design
+- [Pricing](https://deedcode.com/services): value ladder for churches and NGOs, fixed prices in KES
+- [Our work](https://deedcode.com/work): live sites at lusegatales.com and talesbytitus.com
+- [About and founder](https://deedcode.com/about): Duncan K. Kigen, founder of DeedCode
+- [Live demo](https://deedcode.com/demo): interactive simulation of guest follow-up, M-Pesa giving, sermon study guides and NGO impact tracking
+- [Free data protection checklist](https://deedcode.com/checklist): ODPC and consent basics for Kenyan churches and NGOs
+- [Kiswahili](https://deedcode.com/sw): short Kiswahili version of the homepage
+- [Free Time-Leak Audit](https://deedcode.com/audit): where your team's hours leak, what to automate first, and a fixed-price plan
+- [Contact](https://deedcode.com/contact): WhatsApp +254 703 545 010, info@deedcode.com
