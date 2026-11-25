@@ -1,0 +1,26 @@
+# DeedCode
+
+> DeedCode is a Nairobi, Kenya automation partner founded by Duncan K. Kigen. Tagline: "Done while you sleep." We build WhatsApp and M-Pesa revenue engines for Kenyan businesses: 24/7 WhatsApp booking, M-Pesa STK Push payments, instant receipts and automatic reconciliation. Live in 7 days.
+
+## Who we serve
+Private clinics, property managers and landlords, private schools and colleges, SACCOs and chamas, law/accounting/consulting firms, gyms/spas/salons, car hire/tours/driving schools, wholesalers and distributors.
+
+## Pricing (KES, month to month)
+- Starter: 9,500 setup + 2,500/month
+- Growth: 24,500 setup + 4,500/month
+- Collections Pro: 39,500 setup + 7,500/month
+- Custom: from 79,000 setup + 12,000/month
+
+## Guarantees
+7-day go-live, 90-day money-back, zero lock-in. Built in line with the Kenya Data Protection Act.
+
+## Pages
+- https://deedcode.com/industries
+- https://deedcode.com/demo
+- https://deedcode.com/pricing
+- https://deedcode.com/guarantee
+- https://deedcode.com/about
+- https://deedcode.com/audit
+
+## Contact
+WhatsApp +254 703 545 010 · info@deedcode.com
